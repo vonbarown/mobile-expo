@@ -5,6 +5,7 @@ import HomeScreen from "../screens/Homescreen";
 import TestFiles from "../screens/testFiles";
 import Detail from "../screens/Details";
 import Settings from "../screens/Settings";
+import CameraApp from "../screens/Camera";
 
 const Stack = createStackNavigator();
 
@@ -14,13 +15,14 @@ function MainStackNavigator() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
+          headerShown: false,
           gestureEnabled: true,
           headerStyle: { backgroundColor: "#101010" },
           headerTitleStyle: {
-            fontWeight: "bold"
+            fontWeight: "bold",
           },
           headerTintColor: "#ffd700",
-          headerBackTitleVisible: false
+          headerBackTitleVisible: false,
         }}
         headerMode="float"
       >
@@ -35,10 +37,16 @@ function MainStackNavigator() {
           options={{ title: "Test Screen" }}
         />
         <Stack.Screen
+          name="Camera"
+          component={CameraApp}
+
+          // options={{ title: "Camera Screen" }}
+        />
+        <Stack.Screen
           name="Detail"
           component={Detail}
           options={({ route }) => ({
-            title: route.params.item.name
+            title: route.params.item.name,
           })}
         />
         <Stack.Screen
